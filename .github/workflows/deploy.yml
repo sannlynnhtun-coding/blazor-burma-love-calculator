@@ -27,9 +27,16 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
+      # 2.2 Initialize Node.js Environment (for Tailwind CSS)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       # 3. Handle Dependencies and Build
       - name: Restore & Build
         run: |
+          npm install
           dotnet restore
           dotnet build --configuration Release --no-restore
 
