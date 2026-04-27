@@ -153,6 +153,12 @@
     </div>
 </div>
 
+@code {
+    private string firstName = "";
+    private string secondName = "";
+    private string error = "";
+    private bool isCalculating = false;
+    private CalculationResult? result;
     private List<HeartParticle> particles = new();
     private Random random = new();
 
