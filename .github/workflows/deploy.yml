@@ -68,6 +68,10 @@ jobs:
           fix_file "dotnet.runtime.*.js" "dotnet.runtime.js"
           echo "Non-fingerprinted clones created."
 
+      - name: Copy Vercel Config
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: cp vercel.json publish_output/wwwroot/
+
       # 5. Push to Vercel
       - name: Deploy to Vercel
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
