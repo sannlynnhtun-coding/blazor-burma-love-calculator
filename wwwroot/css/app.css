@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 54% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 54% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 54% 15%;
+    --primary: 0 79% 55%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 44% 96%;
+    --secondary-foreground: 0 55% 24%;
+    --muted: 0 26% 93%;
+    --muted-foreground: 0 18% 42%;
+    --accent: 18 100% 95%;
+    --accent-foreground: 0 55% 24%;
+    --destructive: 0 67% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 39% 86%;
+    --input: 0 32% 91%;
+    --ring: 0 79% 55%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-['Manrope'];
+    background:
+      radial-gradient(circle at 10% 8%, hsl(var(--accent) / 0.9), transparent 33%),
+      radial-gradient(circle at 90% 7%, hsl(var(--secondary) / 0.96), transparent 28%),
+      radial-gradient(circle at 68% 92%, hsl(var(--primary) / 0.28), transparent 29%),
+      linear-gradient(160deg, #fff, #fff5f5 52%, #fff0ef 100%);
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply relative overflow-hidden isolate;
+  }
+
+  .app-shell::before,
+  .app-shell::after {
+    content: '';
+    @apply absolute -z-10 rounded-full blur-xl;
+  }
+
+  .app-shell::before {
+    @apply w-[22rem] h-[22rem] -top-32 -left-16;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 70%);
+  }
+
+  .app-shell::after {
+    @apply w-[19rem] h-[19rem] -right-20 -bottom-24;
+    background: radial-gradient(circle, hsl(var(--destructive) / 0.24), transparent 70%);
+  }
+
+  .title-gradient {
+    @apply font-['Bebas_Neue'] tracking-[0.06em] bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #991b1b 0%, #dc2626 50%, #ef4444 100%);
+  }
+
+  .luxe-card {
+    @apply border border-border backdrop-blur-md;
+    background: linear-gradient(135deg, hsl(var(--card) / 0.86), hsl(var(--secondary) / 0.75));
+    box-shadow:
+      0 30px 58px -42px hsl(var(--primary) / 0.8),
+      0 10px 22px -14px hsl(var(--destructive) / 0.3);
+  }
+
+  .input-luxe {
+    @apply w-full rounded-md border border-input px-4 py-3 text-base font-semibold transition-all;
+    background: hsl(var(--card) / 0.9);
+  }
+
+  .input-luxe:focus {
+    @apply outline-none ring-4 ring-ring/20 border-ring -translate-y-[1px];
+  }
+
+  .button-luxe {
+    @apply inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-base font-extrabold tracking-wide text-primary-foreground transition-all;
+    background: linear-gradient(95deg, #991b1b, hsl(var(--primary)), #ef4444);
+    box-shadow: 0 16px 30px -18px hsl(var(--primary) / 0.95);
+  }
+
+  .button-luxe:hover {
+    @apply -translate-y-0.5 shadow-[0_24px_34px_-20px_rgba(var(--primary),1)];
+    box-shadow: 0 24px 34px -20px hsl(var(--primary) / 1);
+  }
+
+  .trace-list {
+    @apply rounded-xl border border-border overflow-hidden;
+    background: linear-gradient(140deg, hsl(var(--card) / 0.7), hsl(var(--secondary) / 0.78));
+  }
+
+  .trace-card {
+    @apply rounded-lg border border-border p-3 flex flex-col gap-2;
+    background: linear-gradient(140deg, hsl(var(--card) / 0.92), hsl(var(--secondary) / 0.82));
+  }
+
+  .number-chip {
+    @apply rounded-xl border border-border bg-card/90 px-2.5 py-1.5 text-sm font-bold;
+  }
+}
