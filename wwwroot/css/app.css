@@ -136,4 +136,24 @@
   .number-chip {
     @apply rounded-xl border border-border bg-card/90 px-2.5 py-1.5 text-sm font-bold;
   }
+
+  @keyframes heart-burst {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.5); opacity: 0; }
+  }
+
+  .heart-spark {
+    @apply fixed pointer-events-none z-[100];
+    animation: heart-burst 1s ease-out forwards;
+  }
+
+  @keyframes premium-glow {
+    0%, 100% { filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.4)); }
+    50% { filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.7)); }
+  }
+
+  .glow-premium {
+    animation: premium-glow 3s infinite ease-in-out;
+  }
 }
